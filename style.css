@@ -35,3 +35,9 @@ button {
 .form-control {
 	margin-bottom: 10px;
 }
+.navbar-brand {
+	color: #d6b477 !important;
+}
+#moreText {
+	color: white;
+}
