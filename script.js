@@ -1,53 +1,61 @@
-document.addEventListener("DOMContentLoaded", function () {
-	const showMore = document.getElementById("showMore");
-	const moreText = document.getElementById("moreText");
+const button = document.querySelector('#showMore');
+const moreText = document.querySelector('#moreText');
 
-	if (showMore && moreText) {
-		showMore.addEventListener("click", function () {
-			moreText.classList.toggle("d-none");
-			showMore.textContent = moreText.classList.contains("d-none") ? "Подробнее" : "Скрыть";
-		});
-	}
+if (button && moreText) {
+  button.addEventListener('click', () => {
+    moreText.classList.toggle('d-none');
+    button.textContent = moreText.classList.contains('d-none')
+      ? 'Подробнее'
+      : 'Скрыть';
+  });
+}
 
-	const projects = document.getElementById("projects");
+const themeBtn = document.querySelector('#theme');
 
-	if (projects) {
-		fetch("data/projects.json")
-			.then(response => response.json())
-			.then(data => {
-				data.forEach(project => {
-					projects.innerHTML += `
-						<div class="col-md-6 mb-3">
-							<div class="card p-3">
-								<h5>${project.title}</h5>
-								<p>${project.description}</p>
-							</div>
-						</div>`;
-				});
-			})
-			.catch(() => {
-				projects.textContent = "Не удалось загрузить информацию.";
-			});
-	}
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    themeBtn.textContent = document.body.classList.contains('dark-theme')
+      ? 'Светлая тема'
+      : 'Тёмная тема';
+  });
+}
 
-	const form = document.getElementById("contactForm");
+const form = document.querySelector('#contactForm');
+const formMessage = document.querySelector('#formMessage');
 
-	if (form) {
-		form.addEventListener("submit", function (event) {
-			event.preventDefault();
+if (form) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-			const name = document.getElementById("name").value.trim();
-			const email = document.getElementById("email").value.trim();
-			const comment = document.getElementById("comment").value.trim();
-			const message = document.getElementById("formMessage");
+    const name = document.querySelector('#name').value;
+    const email = document.querySelector('#email').value;
+    const comment = document.querySelector('#comment').value;
 
-			if (!name || !email || !comment) {
-				message.textContent = "Заполните все поля.";
-				return;
-			}
+    if (!name || !email.includes('@') || !comment) {
+      formMessage.textContent = 'Заполни все поля и проверь email';
+      formMessage.className = 'text-danger';
+    } else {
+      formMessage.textContent = 'Спасибо, ' + name + '!';
+      formMessage.className = 'text-success';
+    }
+  });
+}
 
-			message.textContent = "Сообщение успешно отправлено!";
-			form.reset();
-		});
-	}
-});
+const projects = [
+  { title: 'Открытый мир', tech: 'Реалистичная Богемия XV века: города, замки и леса' },
+  { title: 'Боевая система', tech: 'Историческое фехтование, арбалеты и раннее огнестрельное оружие' }
+];
+
+const list = document.querySelector('#projects');
+
+if (list) {
+  list.innerHTML = projects.map(project => `
+    <div class="col-12 col-md-6">
+      <article class="card p-3 shadow-sm">
+        <h3>${project.title}</h3>
+        <p>${project.tech}</p>
+      </article>
+    </div>
+  `).join('');
+}

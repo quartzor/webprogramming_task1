@@ -1,23 +1,57 @@
 <!doctype html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>О проекте</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="style.css">
+ <script src="script.js" defer></script>
+ <title>О проекте</title>
 </head>
 <body>
-	<nav>
-		<div class="cards">
-			<a href="index.html">Главная</a>
-			<a href="about.html">О проекте</a>
-			<a href="contacts.html">Контакты</a>
-		</div>
-	</nav>
-	<main>
-		<h1>О игре</h1>
-		<p>Захватывающий сюжетный ролевой экшен с богатым открытым миром, действие которого разворачивается в Европе XV века.</p>
-		<p>Взгляните на средневековую жизнь глазами молодого Индржиха, отправившись в путешествие эпического масштаба.</p>
-	</main>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <div class="navbar-nav">
+      <a class="nav-link" href="index.html">Главная</a>
+      <a class="nav-link active" href="about.html">О проекте</a>
+      <a class="nav-link" href="contacts.html">Контакты</a>
+    </div>
+    <button id="theme" class="btn btn-outline-secondary">Тёмная тема</button>
+  </div>
+</nav>
+ <main class="container py-4">
+  <h1>Об игре</h1>
+  <div class="row g-3">
+    <section class="col-12 col-md-6">
+      <div class="card p-3 shadow-sm">
+        Захватывающий сюжетный ролевой экшен с богатым открытым миром, действие которого разворачивается в Европе XV века.
+      </div>
+    </section>
+    <section class="col-12 col-md-6">
+      <div class="card p-3 shadow-sm">
+        Взгляните на средневековую жизнь глазами молодого Индржиха, отправившись в путешествие эпического масштаба.
+      </div>
+    </section>
+  </div>
+  <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#aboutModal">
+    Системные требования
+   </button>
+  <div class="modal fade" id="aboutModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Системные требования</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          ОС: Windows 10 (64-bit), Процессор: Intel Core i5-8400, ОЗУ: 16 ГБ, Видеокарта: GTX 1060.
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="mt-4">Особенности игры</h2>
+  <section id="projects" class="row g-3"></section>
+ </main>
+ <script src="bootstrap.bundle.min.js"></script>
 </body>
 </html>
